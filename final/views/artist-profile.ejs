@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= artist.name %>'s Profile</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1><%= artist.name %></h1>
+    </header>
+
+    <section id="artworks">
+        <h2>Artworks</h2>
+        <div>
+            <% artist.artworks.forEach(function(artwork) { %>
+                <article>
+                    <h3><%= artwork.title %></h3>
+                    <img src="<%= artwork.image %>" alt="<%= artwork.title %>">
+                    <p><%= artwork.description %></p>
+                    <a href="/artwork/<%= artwork.id %>">View Artwork</a>
+                </article>
+            <% }); %>
+        </div>
+    </section>
+
+    <section id="workshops">
+        <h2>Workshops</h2>
+        <div>
+            <% artist.workshops.forEach(function(workshop) { %>
+                <article>
+                    <h3><%= workshop.title %></h3>
+                    <p><%= workshop.description %></p>
+                    <!-- Add more workshop details here -->
+                    <button onclick="enroll('<%= workshop.id %>')">Enroll</button>
+                </article>
+            <% }); %>
+        </div>
+    </section>
+
+    <script>
+        function enroll(workshopId) {
+            // Implement AJAX request to enroll in the workshop
+            alert('Enrollment functionality not implemented yet.');
+        }
+    </script>
+
+    <footer>
+        <!-- Footer content here -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork Gallery</title>
+    <style>
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .artwork-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/new-artwork">New Artwork</a>
+        <a href="/artwork">Artwork</a>
+        <a href="/workshop">Workshop</a>
+        <a href="/user-information">User Information</a>
+        <a href="/login">Log-in</a>
+        <!-- Add additional links or buttons for user registration or other pages as needed -->
+    </div>
+    <h1>Artwork Gallery</h1>
+    <div id="gallery" class="gallery-container">
+        <% if (artworks && artworks.length > 0) { %>
+            <% artworks.forEach(function(artwork) { %>
+                <div class="artwork-item">
+                    <h3><%= artwork.Title %></h3>
+                    <% if(artwork.Poster) { %>
+                        <img src="<%= artwork.Poster %>" alt="Image of <%= artwork.Title %>">
+                    <% } %>
+                    <p><strong>Artist:</strong> <%= artwork.Artist %></p>
+                    <p><strong>Year:</strong> <%= artwork.Year %></p>
+                    <p><strong>Category:</strong> <%= artwork.Category %></p>
+                    <p><strong>Medium:</strong> <%= artwork.Medium %></p>
+                    <% if(artwork.Description) { %>
+                        <p><%= artwork.Description %></p>
+                    <% } %>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No artworks found.</p>
+        <% } %>
+    </div>
+</body>
+</html>
